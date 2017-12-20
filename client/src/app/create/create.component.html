@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <a href ="/" class="cancel">cancel</a>
+  <h3>Create a New Poll:</h3>
+  <div id="survery_questions">
+    <form #form="ngForm" (submit)="newPoll()">
+        <div class="form-group">
+          <label>User Name: {{user_name}}</label>
+        </div>
+        <div class="form-group">
+          <label>Question</label>
+          <textarea class="form-control" name="question" [(ngModel)]="poll.question" rows="2"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Option 1</label>
+          <input type="text" class="form-control" name="option1" [(ngModel)]="poll.option1">
+        </div>
+        <div class="form-group">
+          <label>Option 2</label>
+          <input type="text" class="form-control" name="option2" [(ngModel)]="poll.option2">
+        </div>
+        <div class="form-group">
+          <label>Option 3</label>
+          <input type="text" class="form-control" name="option3" [(ngModel)]="poll.option3">
+        </div>
+        <div class="form-group">
+          <label>Option 4</label>
+          <input type="text" class="form-control" name="option4" [(ngModel)]="poll.option4">
+        </div>
+          <button class="btn btn-primary">create poll</button>
+    </form>
+  </div>
+</div>

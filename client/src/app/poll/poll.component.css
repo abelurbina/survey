@@ -1,0 +1,20 @@
+form{
+    width: 960px;
+  }
+	.container-fluid{
+		padding: 50px;
+		background-color:whitesmoke;
+		width: 960px;
+		border-radius: 10px;
+    margin-top: 50px;
+    text-align: center;
+    margin: auto;
+    margin-top: 50px;
+  }
+  table{
+    text-align: center;
+    margin: auto;
+  }
+  #dashboard{
+    float:right;
+  }

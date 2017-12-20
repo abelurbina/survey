@@ -1,0 +1,36 @@
+
+<div class="container-fluid">
+  <a href="/dashboard" id="dashboard">go to polls</a>
+<h3>{{poll.question}}</h3>
+<p> click the vote botton to choose one</p>
+
+<table>
+    <tr>
+        <th scope="col">Option</th>
+        <th scope="col">Current Count of Votes</th>
+        <th scope="col">Action</th>
+    </tr>
+    <tbody >
+      <tr *ngFor="let poll of polls">
+          <td>{{poll.option1}}</td>
+          <td>{{poll.vote1}}</td>
+          <td><button class="btn-small btn-primary" (click)="addOne()">Vote</button></td>
+      </tr>
+      <tr>
+          <td>{{poll.option2}}</td>
+          <td>{{poll.vote2}}</td>
+          <td><button class="btn-small btn-primary" (click)="addOne()">Vote</button></td>
+      </tr>
+      <tr>
+          <td>{{poll.option3}}</td>
+          <td>{{poll.vote3}}</td>
+          <td><button class="btn-small btn-primary" (click)="addOne()">Vote</button></td>
+      </tr>
+      <tr>
+          <td>{{poll.option4}}</td>
+          <td>{{poll.vote4}}</td>
+          <td><button class="btn-small btn-primary" (click)="addOne()">Vote</button></td>
+      </tr>
+    </tbody>
+</table>
+</div>
