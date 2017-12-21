@@ -11,7 +11,7 @@ import { VoteService } from './vote.service';
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'poll/:id', component: PollComponent },
+  { path: 'singlepoll/:id', component: PollComponent },
   { path: 'create', component: CreateComponent }
 ];
 

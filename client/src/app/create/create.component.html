@@ -8,25 +8,31 @@
         </div>
         <div class="form-group">
           <label>Question</label>
-          <textarea class="form-control" name="question" [(ngModel)]="poll.question" rows="2"></textarea>
+          <textarea class="form-control" name="question" required minlength="8" [(ngModel)]="poll.question" #question="ngModel" rows="2"></textarea>
         </div>
+        <div *ngIf="question.errors?.required">field required</div>
+        <div *ngIf="question.errors?.minlength">Please enter at least eight characters</div>
         <div class="form-group">
           <label>Option 1</label>
-          <input type="text" class="form-control" name="option1" [(ngModel)]="poll.option1">
+          <input type="text" class="form-control" required minlength="3" name="option1" [(ngModel)]="poll.option1" #option1="ngModel">
         </div>
+        <div *ngIf="option1.errors?.minlength">Please enter at least three characters</div>
         <div class="form-group">
           <label>Option 2</label>
-          <input type="text" class="form-control" name="option2" [(ngModel)]="poll.option2">
+          <input type="text" class="form-control" required minlength="3" name="option2" [(ngModel)]="poll.option2" #option2="ngModel">
         </div>
+        <div *ngIf="option2.errors?.minlength">Please enter at least three characters</div>
         <div class="form-group">
           <label>Option 3</label>
-          <input type="text" class="form-control" name="option3" [(ngModel)]="poll.option3">
+          <input type="text" class="form-control" required minlength="3" name="option3" [(ngModel)]="poll.option3" #option3="ngModel">
         </div>
+        <div *ngIf="option3.errors?.minlength">Please enter at least three characters</div>
         <div class="form-group">
           <label>Option 4</label>
-          <input type="text" class="form-control" name="option4" [(ngModel)]="poll.option4">
+          <input type="text" class="form-control" required minlength="3" name="option4" [(ngModel)]="poll.option4" #option4="ngModel">
         </div>
-          <button class="btn btn-primary">create poll</button>
+        <div *ngIf="option4.errors?.minlength">Please enter at least three characters</div>
+          <button class="btn btn-primary" [disabled]="!form.valid">create poll</button>
     </form>
   </div>
 </div>

@@ -3,6 +3,8 @@ import { VoteService } from '../vote.service';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs'
+import { identifierModuleUrl } from '@angular/compiler';
+import { Response } from '@angular/http/src/static_response';
 
 @Component({
   selector: 'app-poll',
@@ -10,39 +12,33 @@ import { BehaviorSubject } from 'rxjs'
   styleUrls: ['./poll.component.css']
 })
 export class PollComponent implements OnInit {
-  poll={
-    user_name: '',
-    question: '',
-    option1: '',
-    option2: '',
-    option3: '',
-    option4: '',
-    vote1 : '',
-    vote2 : '',
-    vote3 : '',
-    vote4 : ''
-  };
-  constructor(private _voteService: VoteService) { }
+  poll;
+  id;
   
-    getThisPoll(){
-        // this.newFunction();
-      this._voteService.getThisPoll(this.poll,'id');
-      
-    }
-    // private newFunction() {
-    //     // this._voteService.getThisPoll(params =>{params.get('id')});
-    //     this._voteService.getThisPoll(params => {
-    //         console.log(params.get(this.poll, 'id'));
-    //     });
-    // }
+  constructor(private _voteService: VoteService, private _route: ActivatedRoute) { 
 
+    this._route.paramMap.subscribe((params) => {
+      this.id = params.get('id');
+      this._voteService.getThisPoll(this.id, (poll) => {
+        this.poll = poll;
+      })
+    })
+  }
+
+
+// getPolls(){
+//       this._voteService.getThisPoll(this.id, (poll) => {
+//         this.poll = poll;
+//       })
+//     }
+  
     ngOnInit() {
       this._voteService.polls.subscribe(
-        (poll)=> {poll = poll;}
+        (response)=> {this.poll = response;}
       );
-      // this._voteService.getAllPolls();
-    
-   
+    }
+
   }
-}
+
+
 

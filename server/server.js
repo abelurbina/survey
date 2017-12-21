@@ -25,6 +25,7 @@ var Poll = mongoose.model('Poll', PollSchema);
 
 //***********Get and Post Routes */
 
+// creates a new poll
 app.post('/new', function(req, res){
     Poll.create(req.body, function(err, results){
         if(err){
@@ -36,6 +37,7 @@ app.post('/new', function(req, res){
     })
 })
 
+// get results of all the polls
 app.get('/all', function(req, res){
     Poll.find({}, function(err, results){
         if(err){
@@ -46,16 +48,20 @@ app.get('/all', function(req, res){
         }
     })
 })
+
+//find a poll by its ID 
 app.get('/poll/:id', function(req, res){
-    Poll.find({_id:req.params.id}, function(err, result){
+    Poll.find({_id:req.params.id}, function(err, results){
         if(err){
             console.log(err);
             res.json({message: 'YOU GOT AN ERRORRRR'});
         }else{
-            res.json(result);
+            res.json(results);
         }
     })
 })
+
+//delete a poll by its ID
 app.delete('/destroy/:id', function(req, res){
     Poll.remove({_id:req.params.id}, function(err, result){
         if(err){
@@ -66,8 +72,6 @@ app.delete('/destroy/:id', function(req, res){
         }
     })
 })
-
-
 
 
 

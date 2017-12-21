@@ -1,6 +1,8 @@
 <div class="container-fluid">
+  <button id="logout" class="btn btn-warning" (click)="logout(user_name)">log out</button>
   <h6>Logged in as: {{user_name}}</h6>
   <br>
+  
   <h3>Current Polls</h3>
   <table class="table">
       <tr>
@@ -11,14 +13,14 @@
       </tr>
       <tbody *ngFor="let poll of polls">
         <td>{{ poll.user_name }}</td>
-        <td><a [routerLink]="['/poll', poll._id]" >{{ poll.question }}</a></td>
+        <td><a [routerLink]="['/singlepoll', poll._id]" >{{ poll.question }}</a></td>
         <td>{{ poll.createdAt | date:'longDate' }}</td>
-        <td><button (click)="removePoll(poll, poll._id)">Delete</button></td>
+        <td><button *ngIf="poll.user_name == user_name" (click)="removePoll(poll, poll._id)">Delete</button></td>
       </tbody>
   </table>
   <br>
   <div>
-    <a href="/create">Create a New Poll |</a>
-    <a href="/logout">Log Out</a>
+    <a href="/create">Create a New Poll</a>
+    
   </div>
 </div>

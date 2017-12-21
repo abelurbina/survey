@@ -10,3 +10,6 @@
   table{
     text-align: left;
   }
+  #logout{
+    float: right;
+  }
